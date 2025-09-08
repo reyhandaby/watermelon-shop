@@ -6,9 +6,8 @@ import Link from 'next/link';
 import blogPosts from '../../../data/blogPosts';
 
 export default function BlogPost({ params }: { params: { id: string } }) {
-  // Unwrap params using React.use() to avoid warning
-  const unwrappedParams = React.use(params as any);
-  const post = blogPosts.find(post => post.id === unwrappedParams.id);
+  // Use params directly as it is already typed
+  const post = blogPosts.find(post => post.id === params.id);
 
   if (!post) {
     return (
@@ -17,7 +16,7 @@ export default function BlogPost({ params }: { params: { id: string } }) {
         <div className="pt-24 px-4 md:px-8 lg:px-16">
           <div className="max-w-3xl mx-auto text-center py-12">
             <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">Blog Post Not Found</h1>
-            <p className="text-gray-600 dark:text-gray-300 mb-8">The blog post you're looking for doesn't exist or has been removed.</p>
+            <p className="text-gray-600 dark:text-gray-300 mb-8">The blog post you&apos;re looking for doesn&apos;t exist or has been removed.</p>
             <Link href="/blog" className="bg-red-500 hover:bg-red-600 text-white px-6 py-3 rounded-md font-medium transition-colors duration-200">
               Back to Blog
             </Link>
@@ -104,10 +103,10 @@ export default function BlogPost({ params }: { params: { id: string } }) {
             </p>
             {/* This would be expanded with the full blog content in a real implementation */}
             <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
-              Watermelons are not only delicious but also incredibly nutritious. They're mostly water — about 92 percent — but this refreshing fruit is soaked with nutrients. Each juicy bite has significant levels of vitamins A, B6 and C, lots of lycopene, antioxidants and amino acids.
+              Watermelons are not only delicious but also incredibly nutritious. They&apos;re mostly water — about 92 percent — but this refreshing fruit is soaked with nutrients. Each juicy bite has significant levels of vitamins A, B6 and C, lots of lycopene, antioxidants and amino acids.
             </p>
             <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
-              There's even a modest amount of potassium. Plus, this quintessential summer snack is fat-free, very low in sodium and has only 40 calories per cup. They also provide a natural source of hydration, especially important during hot summer months.
+              There&apos;s even a modest amount of potassium. Plus, this quintessential summer snack is fat-free, very low in sodium and has only 40 calories per cup. They also provide a natural source of hydration, especially important during hot summer months.
             </p>
           </div>
 

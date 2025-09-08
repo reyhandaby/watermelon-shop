@@ -17,15 +17,28 @@ export default function Contact() {
     message: ''
   });
 
-  const handleChange = (e) => {
+  interface FormData {
+    name: string;
+    email: string;
+    subject: string;
+    message: string;
+  }
+
+  interface FormStatus {
+    submitted: boolean;
+    success: boolean;
+    message: string;
+  }
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
+    setFormData((prev: FormData) => ({
       ...prev,
       [name]: value
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     // Simulate form submission
     setFormStatus({
@@ -53,7 +66,7 @@ export default function Contact() {
             Contact <span className="text-red-500">Watermelon</span> <span className="text-green-600">Shop</span>
           </h1>
           <p className="text-xl text-center text-gray-600 dark:text-gray-300 mb-8 max-w-3xl mx-auto">
-            We'd love to hear from you! Reach out with any questions, feedback, or wholesale inquiries.
+            We&apos;d love to hear from you! Reach out with any questions, feedback, or wholesale inquiries.
           </p>
         </div>
       </section>
@@ -65,7 +78,7 @@ export default function Contact() {
             <div>
               <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">Get in Touch</h2>
               <p className="text-lg text-gray-600 dark:text-gray-300 mb-8">
-                Fill out the form and our team will get back to you as soon as possible. We're here to help with any questions about our products or services.
+                Fill out the form and our team will get back to you as soon as possible. We&apos;re here to help with any questions about our products or services.
               </p>
               
               <div className="space-y-6">
@@ -187,7 +200,7 @@ export default function Contact() {
                     <textarea
                       id="message"
                       name="message"
-                      rows="5"
+                      rows={5}
                       value={formData.message}
                       onChange={handleChange}
                       required

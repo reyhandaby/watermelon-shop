@@ -79,7 +79,7 @@ export default function About() {
                 </svg>
               </div>
               <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">Sustainability</h3>
-              <p className="text-gray-600 dark:text-gray-300">We're committed to sustainable farming practices that protect our environment for future generations.</p>
+              <p className="text-gray-600 dark:text-gray-300">We&apos;re committed to sustainable farming practices that protect our environment for future generations.</p>
             </div>
             <div className="bg-white dark:bg-gray-800 p-8 rounded-lg shadow-md text-center">
               <div className="bg-pink-100 dark:bg-pink-800 w-16 h-16 mx-auto rounded-full flex items-center justify-center mb-6">

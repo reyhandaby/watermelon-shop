@@ -64,8 +64,8 @@ export default function Home() {
                 Every watermelon in our shop is carefully selected to ensure the best taste and freshness.
               </p>
               <p className="text-lg text-gray-600 dark:text-gray-300">
-                At Watermelon Shop, we believe that a perfect watermelon can brighten anyone's day. 
-                That's why we're committed to delivering excellence in every slice.
+                At Watermelon Shop, we believe that a perfect watermelon can brighten anyone&apos;s day. 
+                That&apos;s why we&apos;re committed to delivering excellence in every slice.
               </p>
             </div>
             <div className="grid grid-cols-2 gap-6">
