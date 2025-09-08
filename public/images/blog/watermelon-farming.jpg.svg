@@ -1,0 +1,7 @@
+<svg width="800" height="600" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="600" fill="#f8f8f8"/>
+  <rect x="50" y="50" width="700" height="500" rx="15" fill="#009432" opacity="0.8"/>
+  <path d="M200,400 L400,200 L600,400 Z" fill="#4cd137"/>
+  <circle cx="400" cy="350" r="100" fill="#ff6b6b"/>
+  <text x="400" y="500" font-family="Arial" font-size="32" text-anchor="middle" fill="white">Farming Guide</text>
+</svg>

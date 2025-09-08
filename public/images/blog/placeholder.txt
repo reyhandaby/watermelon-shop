@@ -1,0 +1,1 @@
+This directory contains blog post images. Replace this file with actual image files.

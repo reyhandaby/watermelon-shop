@@ -1,0 +1,12 @@
+<svg width="800" height="600" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="600" fill="#f8f8f8"/>
+  <rect x="50" y="50" width="700" height="500" rx="15" fill="#ff6b6b" opacity="0.8"/>
+  <circle cx="400" cy="300" r="200" fill="#4cd137"/>
+  <circle cx="400" cy="300" r="180" fill="#ff6b6b"/>
+  <circle cx="350" cy="250" r="15" fill="#2f3542"/>
+  <circle cx="400" cy="300" r="15" fill="#2f3542"/>
+  <circle cx="450" cy="350" r="15" fill="#2f3542"/>
+  <circle cx="380" cy="350" r="15" fill="#2f3542"/>
+  <circle cx="320" cy="320" r="15" fill="#2f3542"/>
+  <text x="400" y="500" font-family="Arial" font-size="32" text-anchor="middle" fill="white">Health Benefits</text>
+</svg>
