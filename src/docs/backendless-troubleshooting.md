@@ -1,4 +1,4 @@
-# Backendless API Troubleshooting Guide
+<!-- # Backendless API Troubleshooting Guide
 
 ## Common Connection Issues
 
@@ -64,4 +64,4 @@ The application includes a "Retry Connection" button that appears when a connect
 
 ## Offline Mode
 
-If you're working offline, the application will detect this and show an appropriate message. Some features may be limited or unavailable when offline.
+If you're working offline, the application will detect this and show an appropriate message. Some features may be limited or unavailable when offline. -->
