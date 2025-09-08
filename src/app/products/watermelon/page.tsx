@@ -5,19 +5,21 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 
+type VarietyKey = 'seedless' | 'mini' | 'yellow' | 'organic';
+
+interface Variety {
+  name: string;
+  price: number;
+  description: string;
+  features: string[];
+}
+
 export default function WatermelonProduct() {
   const [quantity, setQuantity] = useState(1);
-  const [selectedVariety, setSelectedVariety] = useState('seedless');
+  const [selectedVariety, setSelectedVariety] = useState<VarietyKey>('seedless');
   const searchParams = useSearchParams();
   
-  useEffect(() => {
-    const varietyParam = searchParams.get('variety');
-    if (varietyParam && Object.keys(varieties).includes(varietyParam)) {
-      setSelectedVariety(varietyParam);
-    }
-  }, [searchParams]);
-  
-  const varieties = {
+  const varieties: Record<VarietyKey, Variety> = {
     seedless: {
       name: 'Seedless Watermelon',
       price: 8.99,
@@ -43,6 +45,14 @@ export default function WatermelonProduct() {
       features: ['Certified organic', 'Environmentally friendly', 'No synthetic chemicals', 'Average weight: 15-22 lbs']
     }
   };
+
+  useEffect(() => {
+    const varietyParam = searchParams.get('variety');
+    if (varietyParam && Object.keys(varieties).includes(varietyParam)) {
+      setSelectedVariety(varietyParam as VarietyKey);
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [searchParams]);
   
   const incrementQuantity = () => {
     setQuantity(prev => prev + 1);
@@ -54,7 +64,7 @@ export default function WatermelonProduct() {
     }
   };
 
-  const handleVarietyChange = (variety) => {
+  const handleVarietyChange = (variety: VarietyKey) => {
     setSelectedVariety(variety);
   };
 
@@ -145,14 +155,14 @@ export default function WatermelonProduct() {
                 <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">Variety</h3>
                 <div className="grid grid-cols-2 gap-3">
                   {Object.keys(varieties).map((variety) => (
-                    <button
-                      key={variety}
-                      onClick={() => handleVarietyChange(variety)}
-                      className={`px-4 py-2 rounded-md text-sm font-medium transition-colors duration-200 ${selectedVariety === variety ? 'bg-red-500 text-white' : 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600'}`}
-                    >
-                      {varieties[variety].name}
-                    </button>
-                  ))}
+                                      <button
+                                        key={variety}
+                                        onClick={() => handleVarietyChange(variety as VarietyKey)}
+                                        className={`px-4 py-2 rounded-md text-sm font-medium transition-colors duration-200 ${selectedVariety === variety ? 'bg-red-500 text-white' : 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600'}`}
+                                      >
+                                        {varieties[variety as VarietyKey].name}
+                                      </button>
+                                    ))}
                 </div>
               </div>
 
@@ -335,33 +345,33 @@ export default function WatermelonProduct() {
           <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-8">You May Also Like</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {Object.keys(varieties)
-              .filter(variety => variety !== selectedVariety)
-              .map(variety => (
-                <div key={variety} className="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden">
-                  <div className="p-4 bg-green-50 dark:bg-green-900">
-                    <div className="relative w-full aspect-square">
-                      <Image
-                        src={`/assets/${variety}-watermelon.jpeg`}
-                        alt={varieties[variety].name}
-                        width={200}
-                        height={200}
-                        className="object-contain"
-                      />
-                    </div>
-                  </div>
-                  <div className="p-4">
-                    <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">{varieties[variety].name}</h3>
-                    <p className="text-red-500 dark:text-red-400 font-bold mb-3">${varieties[variety].price.toFixed(2)}</p>
-                    <button 
-                      onClick={() => handleVarietyChange(variety)}
-                      className="w-full bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-md font-medium transition-colors duration-200 text-sm"
-                    >
-                      View Details
-                    </button>
-                  </div>
-                </div>
-              ))
-            }
+                          .filter(variety => variety !== selectedVariety)
+                          .map(variety => (
+                            <div key={variety} className="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden">
+                              <div className="p-4 bg-green-50 dark:bg-green-900">
+                                <div className="relative w-full aspect-square">
+                                  <Image
+                                    src={`/assets/${variety}-watermelon.jpeg`}
+                                    alt={varieties[variety as VarietyKey].name}
+                                    width={200}
+                                    height={200}
+                                    className="object-contain"
+                                  />
+                                </div>
+                              </div>
+                              <div className="p-4">
+                                <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">{varieties[variety as VarietyKey].name}</h3>
+                                <p className="text-red-500 dark:text-red-400 font-bold mb-3">${varieties[variety as VarietyKey].price.toFixed(2)}</p>
+                                <button 
+                                  onClick={() => handleVarietyChange(variety as VarietyKey)}
+                                  className="w-full bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-md font-medium transition-colors duration-200 text-sm"
+                                >
+                                  View Details
+                                </button>
+                              </div>
+                            </div>
+                          ))
+                        }
           </div>
         </div>
       </section>
