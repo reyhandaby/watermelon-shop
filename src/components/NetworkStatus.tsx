@@ -33,7 +33,7 @@ export default function NetworkStatus() {
     };
   }, []);
 
-  if (!showMessage) return null;
+  if (!showMessage) {return null;}
 
   return (
     <div className={`fixed bottom-4 right-4 p-4 rounded-md shadow-lg transition-all duration-300 ${isOnline ? 'bg-green-100' : 'bg-red-100'}`}>
