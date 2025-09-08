@@ -1,7 +1,6 @@
 'use client';
 import React, { useState } from 'react';
 import Navbar from '../../components/navbar';
-import Link from 'next/link';
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -24,11 +23,6 @@ export default function Contact() {
     message: string;
   }
 
-  interface FormStatus {
-    submitted: boolean;
-    success: boolean;
-    message: string;
-  }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;

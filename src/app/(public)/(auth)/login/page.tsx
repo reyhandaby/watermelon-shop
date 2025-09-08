@@ -32,11 +32,15 @@ export default function LoginPage() {
               await loginUser(values.email, values.password);
               setSuccess("Login successful!");
             } catch (err) {
-              setError(
-                (err as any)?.response?.data?.message || 
-                (err as Error)?.message || 
-                "Login failed"
-              );
+              let errorMessage = "Login failed";
+              if (err && typeof err === "object") {
+                if ("response" in err && typeof (err as { response?: unknown }).response === "object") {
+                  errorMessage = (err as { response?: { data?: { message?: string } } }).response?.data?.message || errorMessage;
+                } else if (err instanceof Error) {
+                  errorMessage = err.message;
+                }
+              }
+              setError(errorMessage);
             }
             setSubmitting(false);
           }}
